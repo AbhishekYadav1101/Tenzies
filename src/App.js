@@ -3,6 +3,8 @@ import Die from "./Die"
 import "./App.css"
 
 export default function App() {
+
+
     const [dice, setDice] = React.useState(allNewDice())
     
     function allNewDice() {
@@ -13,6 +15,10 @@ export default function App() {
         return newDice
     }
     
+    function rollDice() {
+        setDice(allNewDice())
+    }
+    
     const diceElements = dice.map(die => <Die value={die} />)
     
     return (
@@ -20,6 +26,7 @@ export default function App() {
             <div className="dice-container">
                 {diceElements}
             </div>
+            <button className="roll-dice" onClick={rollDice}>Roll</button>
         </main>
     )
 }
